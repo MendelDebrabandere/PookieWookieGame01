@@ -11,6 +11,6 @@ config_version=5
 [application]
 
 config/name="Pookie Wookie Game 01"
-run/main_scene="res://MainWorld.tscn"
+run/main_scene="res://Scenes/MainWorld.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.svg"
