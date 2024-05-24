@@ -3,7 +3,7 @@ extends PathFollow2D
 @onready var parent = get_parent() as Path2D
 
 
-const MOVE_SPEED = 300
+const MOVE_SPEED = 100
 
 
 # Called when the node enters the scene tree for the first time.
