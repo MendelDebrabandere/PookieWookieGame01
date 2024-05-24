@@ -25,7 +25,6 @@ func _on_PanelContainer_mouse_exited():
 
 func _on_mouse_entered():
 	hovering_over = true
-	Control.pivot_ofset = get_world_position()
 	scale = Vector2(1.05, 1.05)
 
 func _on_mouse_exited():
