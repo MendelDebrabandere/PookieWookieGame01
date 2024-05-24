@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cml624xwcvrt"]
+
+[ext_resource type="Script" path="res://Scenes/BaseEnemy.gd" id="1_48bux"]
+[ext_resource type="Texture2D" uid="uid://cwe023yh80udr" path="res://Assets/icon.svg" id="1_jnd8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bt0bd"]
+size = Vector2(130, 129)
+
+[node name="PathFollow2D" type="PathFollow2D"]
+script = ExtResource("1_48bux")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_bt0bd")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_jnd8e")
