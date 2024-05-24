@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cco8xwu7n0hps"
-path="res://.godot/imported/WorldAtlasPNG.png-61c0be011828a9b610c5cb68288edd11.ctex"
+path="res://.godot/imported/WorldAtlasPNG.png-87d03ece420726edbe45adfda91d52a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/WorldAtlasPNG.png"
-dest_files=["res://.godot/imported/WorldAtlasPNG.png-61c0be011828a9b610c5cb68288edd11.ctex"]
+source_file="res://Resources/Assets/WorldAtlasPNG.png"
+dest_files=["res://.godot/imported/WorldAtlasPNG.png-87d03ece420726edbe45adfda91d52a5.ctex"]
 
 [params]
 
