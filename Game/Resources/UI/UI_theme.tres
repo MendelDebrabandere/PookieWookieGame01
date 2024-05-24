@@ -1,15 +1,16 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://bt3f1m5wrv6gp"]
 
-[ext_resource type="FontFile" uid="uid://dfv7q33un2u5v" path="res://Resources/UI/Sugar Latte.otf" id="1_58wnm"]
-[ext_resource type="Texture2D" uid="uid://bgacoxjsu8w2m" path="res://Resources/Assets/frame.png" id="2_msi37"]
+[ext_resource type="FontFile" uid="uid://bq4k2eyhulfbo" path="res://Resources/UI/8-bit fortress.ttf" id="1_mkl7i"]
+[ext_resource type="Texture2D" uid="uid://clvpeum560o60" path="res://Resources/Assets/BorderFull.png" id="2_y4itr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ic3d"]
-texture = ExtResource("2_msi37")
-texture_margin_left = 18.0
-texture_margin_top = 18.0
-texture_margin_right = 18.0
-texture_margin_bottom = 18.0
+texture = ExtResource("2_y4itr")
+texture_margin_left = 47.0
+texture_margin_top = 47.0
+texture_margin_right = 47.0
+texture_margin_bottom = 47.0
 
 [resource]
-Label/fonts/font = ExtResource("1_58wnm")
+Label/font_sizes/font_size = 11
+Label/fonts/font = ExtResource("1_mkl7i")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_8ic3d")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dghuqj2m8si6a"]
+
+[ext_resource type="Texture2D" uid="uid://cmxsvo3jyiwiv" path="res://Resources/Assets/mushroomF.png" id="1_upws5"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 64.0
+offset_bottom = 128.0
+texture = ExtResource("1_upws5")
