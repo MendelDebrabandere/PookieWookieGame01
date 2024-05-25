@@ -1,20 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://cml624xwcvrt"]
+[gd_scene load_steps=9 format=3 uid="uid://cml624xwcvrt"]
 
 [ext_resource type="Script" path="res://Scripts/BaseEnemy.gd" id="1_48bux"]
-[ext_resource type="Texture2D" uid="uid://cwe023yh80udr" path="res://Resources/Assets/icon.svg" id="1_jnd8e"]
+[ext_resource type="Texture2D" uid="uid://curw5w3a7omb" path="res://Resources/Assets/kittieSprites.png" id="2_4obhg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bt0bd"]
-size = Vector2(66, 65)
+size = Vector2(32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcy7m"]
+atlas = ExtResource("2_4obhg")
+region = Rect2(0, 1, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hnt1"]
+atlas = ExtResource("2_4obhg")
+region = Rect2(32, 1, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tusv1"]
+atlas = ExtResource("2_4obhg")
+region = Rect2(64, 1, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yoea"]
+atlas = ExtResource("2_4obhg")
+region = Rect2(96, 1, 32, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ni525"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcy7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hnt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tusv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yoea")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="PathFollow2D" type="PathFollow2D"]
+rotates = false
+loop = false
 script = ExtResource("1_48bux")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(1.75, 1.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_bt0bd")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_jnd8e")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ni525")
+frame_progress = 0.0450909
