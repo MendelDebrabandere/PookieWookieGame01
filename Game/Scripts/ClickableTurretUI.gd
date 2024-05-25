@@ -1,6 +1,10 @@
 extends TextureRect
 
 @onready var tile_map : TileMap = get_tree().current_scene.get_node("TileMap")
+@export var tower_scene : PackedScene
+
+const Tower = preload("res://Scripts/BaseTower.gd")
+const ShroomSlotUI = preload("res://Scripts/ShroomSlotUI.gd")
 
 var hovering_over : bool
 var mouse_textureRect_ref: TextureRect
@@ -37,9 +41,7 @@ func _input(event):
 			mouse_textureRect_ref = TextureRect.new()
 			mouse_textureRect_ref.texture = texture
 			get_tree().root.add_child(mouse_textureRect_ref)
-					
-					
-					
+			
 	if Input.is_action_just_released("click"):
 		if mouse_textureRect_ref:
 			tile_map.set_cell(1, tile_mouse_pos, 0, Vector2i(0,6))
@@ -48,12 +50,16 @@ func _input(event):
 				var cell_world_pos : Vector2 = tile_map.map_to_local(tile_mouse_pos)
 				var cell_global_pos : Vector2 = tile_map.to_global(cell_world_pos)
 				
-				mouse_textureRect_ref.set_global_position(cell_global_pos - mouse_textureRect_ref.get_texture().get_size() / 2)
+				var shroomSlotUI := get_parent() as ShroomSlotUI
+				#spawn tower object
+				var tower = tower_scene.instantiate()
+				var tower_casted := tower as Tower
+				tower_casted.position = cell_global_pos
+				tower_casted.SetTowerType(shroomSlotUI.type)
+				get_tree().root.add_child(tower) 
 				
-				mouse_textureRect_ref = null
-			else: 
-				mouse_textureRect_ref.queue_free()
-				mouse_textureRect_ref = null
+			mouse_textureRect_ref.queue_free()
+			mouse_textureRect_ref = null
 
 func _process(delta):
 	if mouse_textureRect_ref:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr718a8rd3rl3"]
+[gd_scene load_steps=9 format=3 uid="uid://dr718a8rd3rl3"]
 
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="1_qwahx"]
 [ext_resource type="Texture2D" uid="uid://cco8xwu7n0hps" path="res://Resources/Assets/WorldAtlasPNG.png" id="1_tpttd"]
 [ext_resource type="PackedScene" uid="uid://cml624xwcvrt" path="res://Scenes/BaseEnemy.tscn" id="2_1ampe"]
 [ext_resource type="PackedScene" uid="uid://bj05xfa3c7ol4" path="res://Scenes/ShroomSlotUI.tscn" id="4_83vg7"]
+[ext_resource type="PackedScene" uid="uid://bulushael17be" path="res://Scenes/BaseTower.tscn" id="8_4tfka"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjevq"]
 texture = ExtResource("1_tpttd")
@@ -89,3 +90,6 @@ size_flags_stretch_ratio = 0.1
 [node name="ShroomBox3" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("4_83vg7")]
 layout_mode = 2
 type = 2
+
+[node name="Area2D" parent="." instance=ExtResource("8_4tfka")]
+position = Vector2(286, 211)

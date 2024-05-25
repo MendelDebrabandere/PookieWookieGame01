@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj05xfa3c7ol4"]
+[gd_scene load_steps=5 format=3 uid="uid://bj05xfa3c7ol4"]
 
 [ext_resource type="Script" path="res://Scripts/ShroomSlotUI.gd" id="1_015b4"]
 [ext_resource type="Texture2D" uid="uid://cmxsvo3jyiwiv" path="res://Resources/Assets/mushroomF.png" id="1_xbaeb"]
 [ext_resource type="Script" path="res://Scripts/ClickableTurretUI.gd" id="2_uevol"]
+[ext_resource type="PackedScene" uid="uid://bulushael17be" path="res://Scenes/BaseTower.tscn" id="4_y71nu"]
 
 [node name="ShroomBox" type="VBoxContainer"]
 offset_right = 40.0
@@ -25,6 +26,7 @@ texture = ExtResource("1_xbaeb")
 expand_mode = 5
 stretch_mode = 5
 script = ExtResource("2_uevol")
+tower_scene = ExtResource("4_y71nu")
 
 [node name="PriceTag" type="Label" parent="."]
 layout_mode = 2
