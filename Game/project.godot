@@ -17,7 +17,7 @@ config/icon="res://Resources/Assets/icon.svg"
 
 [autoload]
 
-Definitions="*res://definitions.gd"
+Definitions="*res://Scripts/definitions.gd"
 
 [display]
 
