@@ -33,7 +33,7 @@ func _on_body_exited(body):
 func ShootProjectile():
 	var projectile = projectile_scene.instantiate()
 	var projectile_casted := projectile as Projectile
-	projectile_casted.SetTarget(enemies_in_range[0])
+	projectile_casted.SetTargetAndType(enemies_in_range[0], m_type)
 	projectile_casted.set_position(Vector2(0,-60))
 	add_child(projectile_casted)
 
