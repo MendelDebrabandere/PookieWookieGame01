@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cml624xwcvrt"]
+[gd_scene load_steps=10 format=3 uid="uid://cml624xwcvrt"]
 
 [ext_resource type="Script" path="res://Scripts/BaseEnemy.gd" id="1_48bux"]
+[ext_resource type="Script" path="res://Components/Health.gd" id="1_bohvy"]
 [ext_resource type="Texture2D" uid="uid://curw5w3a7omb" path="res://Resources/Assets/kittieSprites.png" id="2_4obhg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bt0bd"]
@@ -49,6 +50,9 @@ loop = false
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 scale = Vector2(1.75, 1.75)
 script = ExtResource("1_48bux")
+
+[node name="Health" type="Node" parent="CharacterBody2D"]
+script = ExtResource("1_bohvy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(3.42857, 3.14286)

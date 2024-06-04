@@ -1,3 +1,4 @@
+class_name Enemy
 extends CharacterBody2D
 
 @onready var path_follow = get_parent() as PathFollow2D

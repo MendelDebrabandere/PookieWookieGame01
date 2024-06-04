@@ -1,7 +1,6 @@
 extends Area2D
 
 @onready var anim : AnimatedSprite2D = get_node("AnimatedSprite2D")
-const Enemy = preload("res://Scripts/BaseEnemy.gd")
 var target : Enemy
 var last_enemy_pos : Vector2
 var finished_charging : bool = false
@@ -25,7 +24,8 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body is Enemy:
-		body.get_parent().queue_free()
+		var health: Health = body.get_node("Health")
+		health.take_damage(5)
 		queue_free()
 
 func SetTargetAndType(in_enemy: Enemy, in_type :Definitions.TowerType):
