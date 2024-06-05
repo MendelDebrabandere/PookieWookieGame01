@@ -1,9 +1,9 @@
 class_name Health
 extends Node
 
-signal max_health_changed(diff :int)
-signal health_changed(diff: int)
-signal health_depleted
+signal on_max_health_changed(diff :int)
+signal on_health_changed(diff: int)
+signal on_died
 
 @export var max_health: int = 10: set = set_max_health, get = get_max_health
 @export var immortality: bool = false : set = set_immortality, get = get_immortality
@@ -20,7 +20,7 @@ func set_max_health(value:int):
 		max_health = clampedHealth;
 		if health > max_health:
 			health = max_health
-		max_health_changed.emit(diff)
+		on_max_health_changed.emit(diff)
 
 func get_max_health() -> int:
 	return max_health
@@ -56,10 +56,10 @@ func set_health(value: int):
 	if (clamped_value != health):
 		var diff = clamped_value - health
 		health = clamped_value;
-		health_changed.emit(diff)
+		on_health_changed.emit(diff)
 		
 		if (health <= 0):
-			health_depleted.emit()
+			on_died.emit()
 			get_parent().queue_free()
 
 func get_health() -> int:
