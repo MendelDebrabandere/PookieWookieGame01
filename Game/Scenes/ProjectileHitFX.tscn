@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://em3ytve53xql"]
+[gd_scene load_steps=3 format=3 uid="uid://em3ytve53xql"]
 
 [sub_resource type="Curve" id="Curve_o0jxb"]
 _data = [Vector2(0.520833, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0799206, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5w1q1"]
 
 [node name="ProjectileHitFx" type="CPUParticles2D"]
 emitting = false
@@ -17,3 +19,4 @@ initial_velocity_max = 238.47
 scale_amount_min = 3.0
 scale_amount_max = 7.0
 scale_amount_curve = SubResource("Curve_o0jxb")
+color_ramp = SubResource("Gradient_5w1q1")

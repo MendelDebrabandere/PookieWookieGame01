@@ -39,9 +39,12 @@ func _on_body_entered(body):
 		kill_timer.timeout.connect(queue_free)
 		kill_timer.start()
 		#spawn FX
-		var fx = hitFX_scene.instantiate()
+		var fx = hitFX_scene.instantiate() as CPUParticles2D
 		fx.emitting = true
 		add_child(fx)
+		#setting FX gradient
+		var gradient = load("res://Resources/Gradients/FireHitParticleGradient.tres") as Gradient
+		fx.color_ramp = gradient
 		#hide projectile
 		anim.visible = false
 
