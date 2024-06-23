@@ -1,15 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bulushael17be"]
+[gd_scene load_steps=7 format=3 uid="uid://bulushael17be"]
 
 [ext_resource type="Script" path="res://Scripts/BaseTower.gd" id="1_8pe4l"]
+[ext_resource type="PackedScene" uid="uid://dxtpjqbm2t05v" path="res://Scenes/TowerSelectionUI.tscn" id="2_6ujwt"]
 [ext_resource type="Texture2D" uid="uid://cmxsvo3jyiwiv" path="res://Resources/Assets/mushroomF.png" id="2_ohlba"]
 [ext_resource type="PackedScene" uid="uid://b1bb0pmv58vaw" path="res://Scenes/BaseProjectile.tscn" id="2_sbgx3"]
+[ext_resource type="Texture2D" uid="uid://cc3f0j1llmojv" path="res://Resources/Assets/Circle.png" id="4_r4r1b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ij2f8"]
-radius = 174.072
+radius = 200.0
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_8pe4l")
+selected_UI_scene = ExtResource("2_6ujwt")
 projectile_scene = ExtResource("2_sbgx3")
+
+[node name="selectionBox" type="Panel" parent="."]
+modulate = Color(1, 1, 0.988235, 0)
+offset_left = -30.0
+offset_top = -33.0
+offset_right = 30.0
+offset_bottom = 40.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ohlba")
@@ -17,8 +27,12 @@ texture = ExtResource("2_ohlba")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ij2f8")
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
+[node name="AOE visualize" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.380392)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_r4r1b")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="mouse_entered" from="selectionBox" to="." method="_on_selection_box_mouse_entered"]
+[connection signal="mouse_exited" from="selectionBox" to="." method="_on_selection_box_mouse_exited"]

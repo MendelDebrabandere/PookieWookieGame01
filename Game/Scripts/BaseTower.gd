@@ -1,19 +1,26 @@
 class_name BaseTower
 extends Area2D
 
-#@onready var shootChargeTimer : Timer = get_node("Timer")
-var chargingSprite : AnimatedSprite2D = null
+@onready 	var aoevisual : Sprite2D = get_node("AOE visualize") as Sprite2D
+var mouse_over : bool = false
+var is_selected : bool = false
+@export var selected_UI_scene: PackedScene
+var curr_selection_UI
 
 @export var projectile_scene: PackedScene
 var enemies_in_range : Array
 
 var type : Definitions.TowerType
+
 var projectile_ready : bool = 0
+var chargingSprite : AnimatedSprite2D = null
+
 
 func _ready():
-	#shootChargeTimer.set_wait_time(Definitions.tower_fire_rate[type])
-	#shootChargeTimer.timeout.connect(OnProjectileReady)
-	#shootChargeTimer.start()
+	var attackRange : CollisionShape2D = get_node("CollisionShape2D") as CollisionShape2D
+	var circleshape : CircleShape2D = attackRange.shape as CircleShape2D
+	aoevisual.scale = Vector2(circleshape.radius / 500, circleshape.radius / 500)
+	aoevisual.visible = false;
 	projectile_ready = false
 	StartChargingProjectile()
 
@@ -21,6 +28,12 @@ func _process(_delta):
 	if projectile_ready:
 		if enemies_in_range.size() != 0:
 			ShootProjectile()
+	
+	if Input.is_action_just_pressed("click"):
+		if mouse_over and not is_selected:
+			SelectThisTurret()
+		elif is_selected:
+			UnselectThisTurret()
 
 func _on_body_entered(body):
 	if body is Enemy:
@@ -54,3 +67,20 @@ func StartChargingProjectile():
 	chargingSprite.play(Definitions.tower_names[type] + "Charge", Definitions.tower_fire_rate[type])
 	chargingSprite.animation_finished.connect(OnProjectileReady)
 	add_child(chargingSprite)
+
+func _on_selection_box_mouse_entered():
+	mouse_over = true
+
+func _on_selection_box_mouse_exited():
+	mouse_over = false
+
+func SelectThisTurret():
+	is_selected = true
+	aoevisual.visible = true
+	curr_selection_UI = selected_UI_scene.instantiate()
+	get_tree().root.get_node("World/CanvasLayer").add_child(curr_selection_UI)
+
+func UnselectThisTurret():
+	is_selected = false
+	aoevisual.visible = false
+	curr_selection_UI.queue_free()
