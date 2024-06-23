@@ -71,7 +71,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_smqbm")
 }],
 "loop": false,
-"name": &"Fire",
+"name": &"FireCharge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smqbm")
+}],
+"loop": true,
+"name": &"FireIdle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -88,7 +96,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_tv482")
 }],
 "loop": false,
-"name": &"Ice",
+"name": &"IceCharge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv482")
+}],
+"loop": true,
+"name": &"IceIdle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -105,7 +121,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_3xaf0")
 }],
 "loop": false,
-"name": &"Poison",
+"name": &"PoisonCharge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xaf0")
+}],
+"loop": true,
+"name": &"PoisonIdle",
 "speed": 5.0
 }]
 
@@ -119,7 +143,6 @@ shape = SubResource("CircleShape2D_bas8f")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_c5kwl")
-animation = &"Fire"
+animation = &"PoisonCharge"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

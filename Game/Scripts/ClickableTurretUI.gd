@@ -35,7 +35,7 @@ func _on_mouse_exited():
 	hovering_over = false
 	scale = Vector2(1, 1)	
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("click"):
 		if hovering_over:
 			mouse_textureRect_ref = TextureRect.new()
@@ -61,7 +61,7 @@ func _input(event):
 			mouse_textureRect_ref.queue_free()
 			mouse_textureRect_ref = null
 
-func _process(delta):
+func _process(_delta):
 	if mouse_textureRect_ref:
 		var mouse_pos = get_global_mouse_position()
 		

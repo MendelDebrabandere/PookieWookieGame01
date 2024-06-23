@@ -1,3 +1,4 @@
+class_name BaseProjectile
 extends Area2D
 
 @export var hitFX_scene: PackedScene
@@ -5,14 +6,12 @@ extends Area2D
 @onready var anim : AnimatedSprite2D = get_node("AnimatedSprite2D")
 var target : Enemy
 var last_enemy_pos : Vector2
-var finished_charging : bool = false
 const fly_speed : float = 250
 var type : Definitions.TowerType
 var kill_timer: Timer = null
 
 func _ready():
-	anim.play(Definitions.tower_names[type])
-
+	anim.play(Definitions.tower_names[type] + "Idle")
 
 func _process(delta):
 	if kill_timer:
@@ -20,7 +19,7 @@ func _process(delta):
 	else:
 		if is_instance_valid(target):
 			last_enemy_pos = target.get_global_position()
-		if target and finished_charging:
+		if target:
 			var direction : Vector2 = (last_enemy_pos - get_global_position())
 			if direction.length() <= 1:
 				Explode()
@@ -33,13 +32,9 @@ func _on_body_entered(body):
 		health.take_damage(5)
 		Explode()
 
-
 func SetTargetAndType(in_enemy: Enemy, in_type :Definitions.TowerType):
 	target = in_enemy
 	type = in_type
-
-func _on_animated_sprite_2d_animation_finished():
-	finished_charging = true
 	
 func Explode():
 	#set kill timer, using timer to allow particle effect to play first
